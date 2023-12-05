@@ -746,7 +746,7 @@ class PlayerTrackerApp(tk.Tk):
         # Function to process the statistics and awards input
         def submit_statistics():
             # Retrieve statistics from entries
-            stats = {stat: int(entry.get()) for stat, entry in stats_entries.items()}
+            stats = {stat: int(entry.get() or "0") for stat, entry in stats_entries.items()}
             # Convert the stats into the format expected by calculate_points function
             # The expected parameter names are score, rebounds, assists, etc.
             converted_stats = {
