@@ -653,8 +653,11 @@ class PlayerTrackerApp(tk.Tk):
             # Success message
             messagebox.showinfo("Success", "Player successfully created.")
 
-            # Transition to the player options screen
-            self.player_options_screen()
+            # Back to main menu
+            self.reset_gui()
+
+            # # Transition to the player options screen
+            # self.player_options_screen()
 
         except ValueError as e:
             messagebox.showerror("Error", str(e))
