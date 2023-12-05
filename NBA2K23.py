@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import sqlite3
+import os
 
 # Function to initialize the database if it doesn't exist yet
 def initialize_database():
@@ -475,7 +476,9 @@ class PlayerTrackerApp(tk.Tk):
         super().__init__()
         self.title('NBA2K23 Player Tracker')
         self.geometry('400x300')
-        self.iconbitmap('Wembanyama.ico')
+        # Check if the icon file exists in the current directory
+        if os.path.exists('Wembanyama.ico'):
+            self.iconbitmap('Wembanyama.ico')
 
         # Retrieve the list of players from the database
         self.player_list = self.get_players()
@@ -720,7 +723,9 @@ class PlayerTrackerApp(tk.Tk):
         # Create a top-level window for game statistics input
         top = tk.Toplevel(self)
         top.title("Input Game Statistics")
-        top.iconbitmap('Wembanyama.ico')
+        # Check if the icon file exists in the current directory
+        if os.path.exists('Wembanyama.ico'):
+            top.iconbitmap('Wembanyama.ico')
 
         # Create entry widgets for statistics
         stats_entries = {}
@@ -781,7 +786,9 @@ class PlayerTrackerApp(tk.Tk):
         # Create a top-level window for attribute upgrades
         topspend = tk.Toplevel(self)
         topspend.title("NBA 2K23 Attribute Spending")
-        topspend.iconbitmap('Wembanyama.ico')
+        # Check if the icon file exists in the current directory
+        if os.path.exists('Wembanyama.ico'):
+            topspend.iconbitmap('Wembanyama.ico')
 
         # Retrieve current attributes and devpoints
         player_id = self.get_selected_player_id()
@@ -986,8 +993,9 @@ class PlayerTrackerApp(tk.Tk):
         # Create a top-level window for attribute upgrades
         topbadges = tk.Toplevel(self)
         topbadges.title("NBA 2K23 Badges Spending")
-        # Assuming you have an icon file named 'Wembanyama.ico' in the working directory
-        topbadges.iconbitmap('Wembanyama.ico')
+        # Check if the icon file exists in the current directory
+        if os.path.exists('Wembanyama.ico'):
+            topbadges.iconbitmap('Wembanyama.ico')
 
         # Retrieve current attributes and devpoints
         player_id = self.get_selected_player_id()
