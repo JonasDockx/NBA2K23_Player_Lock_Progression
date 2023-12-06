@@ -38,7 +38,7 @@ Installing Python is fairly easy:
 - Open Command Prompt and type `python --version`.
 - If Python is successfully installed, you should see the version number.
 
-### The Python Pillow library
+#### The Python Pillow library
 This is a Python library that is necessary to run this script.  
 It is very easy to install.  
 Open the Command Prompt and type `pip install Pillow`.  
