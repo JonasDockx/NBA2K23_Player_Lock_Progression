@@ -790,6 +790,20 @@ class PlayerTrackerApp(tk.Tk):
         if os.path.exists('Wembanyama.ico'):
             topspend.iconbitmap('Wembanyama.ico')
 
+        # Create a canvas and a scrollbar within the top-level window
+        canvas = tk.Canvas(topspend)
+        scrollbar = tk.Scrollbar(topspend, orient="vertical", command=canvas.yview)
+        scrollable_frame = tk.Frame(canvas)
+
+        # Configure the canvas for scrolling
+        scrollable_frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        # Add canvas and scrollbar to the top-level window
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
         # Retrieve current attributes and devpoints
         player_id = self.get_selected_player_id()
         current_attributes = self.get_player_attributes(player_id)
@@ -803,31 +817,31 @@ class PlayerTrackerApp(tk.Tk):
         for i, attribute in enumerate(attributes):
             attribute_value = current_attributes[attribute]
             attribute_color = attribute_level_colors.get(str(attribute_value), "black")
-            tk.Label(topspend, text=attribute, fg=attribute_color).grid(row=i, column=0)
-            self.current_attribute_labels[attribute] = tk.Label(topspend, text=str(attribute_value), fg=attribute_color)
+            tk.Label(scrollable_frame, text=attribute, fg=attribute_color).grid(row=i, column=0)
+            self.current_attribute_labels[attribute] = tk.Label(scrollable_frame, text=str(attribute_value), fg=attribute_color)
             self.current_attribute_labels[attribute].grid(row=i, column=1)
-            entry = tk.Entry(topspend)
+            entry = tk.Entry(scrollable_frame)
             entry.grid(row=i, column=2)
             self.attribute_entries[attribute] = entry
 
             # Button to increment the attribute value
-            increment_button = tk.Button(topspend, text="+", command=lambda attr=attribute: self.increment_attribute(attr))
+            increment_button = tk.Button(scrollable_frame, text="+", command=lambda attr=attribute: self.increment_attribute(attr))
             increment_button.grid(row=i, column=3)
 
         # Set row weights to make the rows smaller (rows 0 to len(attributes) - 1)
         for i in range(len(attributes)):
-            topspend.grid_rowconfigure(i, weight=1)  # You can adjust the weight value as needed
+            scrollable_frame.grid_rowconfigure(i, weight=1)  # You can adjust the weight value as needed
 
         # Label to display remaining devpoints
-        self.remaining_points_label = tk.Label(topspend, text=f"Remaining Points: {remaining_devpoints}")
+        self.remaining_points_label = tk.Label(scrollable_frame, text=f"Remaining Points: {remaining_devpoints}")
         self.remaining_points_label.grid(row=len(attributes), column=0, columnspan=3)
 
         # Button to spend points on attributes
-        spend_button = tk.Button(topspend, text="Spend Points", command=self.spend_points_on_attributes)
+        spend_button = tk.Button(scrollable_frame, text="Spend Points", command=self.spend_points_on_attributes)
         spend_button.grid(row=len(attributes) + 1, column=0, columnspan=3)
 
         # Button to close the attribute window
-        close_button = tk.Button(topspend, text="Close Window", command=topspend.destroy)
+        close_button = tk.Button(scrollable_frame, text="Close Window", command=topspend.destroy)
         close_button.grid(row=len(attributes) + 2, column=0, columnspan=3)
 
     def increment_attribute(self, attribute):
