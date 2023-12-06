@@ -26,3 +26,35 @@ Badges can be upgraded using either development points or badge points.<br />
 This is a Python script. As such, it will need Python to run.<br />
 Installing Python is fairly easy:<br />
 <br />
+<br><strong>Download Python:</strong></br>
+<ul>
+<li>Go to the <a href="https://www.python.org/downloads/" target="_new">official Python website</a>.</li>
+<li>Click on the "Download Python" button. This will download the latest version of Python.</li>
+</ul>
+</li>
+<br><strong>Run the Installer:</strong></br>
+<ul>
+<li>Once the download is complete, open the installer.</li>
+<li>Ensure that you check the box that says &ldquo;Add Python to PATH&rdquo; before clicking &ldquo;Install Now&rdquo;.</li>
+</ul>
+</li>
+<br><strong>Verify the Installation:</strong></br>
+<ul>
+<li>Open Command Prompt and type <code>python --version</code>.</li>
+<li>If Python is successfully installed, you should see the version number.</li>
+</li>
+<H2>The Python Pillow library</H2>
+This is a Python library that is necessary to run this script.<br />
+It is very easy to install.<br />
+You should open the Command Prompt first.<br />
+In orde to do this, you can just click the Windows button on your keyboard.<br />
+In the search bar, you can just type in CMD.<br />
+You will find the Command Prompt that way.<br />
+<br />
+In the command prompt, you have to type in pip install Pillow.<br />
+This is all that needs to be done.<br />
+Once you've done this, you can just run the Python script by double-clicking it.<br />
+This will start the player progress tracker.<br />
+<br />
+<H3>The Wembanyama icon (optional)</H3>
+You can just place the Wembanyama.ico file in the same diectory as NBA2K23.py.<br />
